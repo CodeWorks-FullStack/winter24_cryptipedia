@@ -7,6 +7,8 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} user info from the database*/
   account: null,
   /** @type {import('./models/Cryptid.js').Cryptid[]} */
-  cryptids: []
+  cryptids: [],
+  /** @type {import('./models/Cryptid.js').Cryptid} */
+  activeCryptid: null
 })
 
