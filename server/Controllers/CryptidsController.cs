@@ -42,4 +42,18 @@ public class CryptidsController : ControllerBase
       return BadRequest(exception.Message);
     }
   }
+
+  [HttpGet("{cryptidId}")]
+  public ActionResult<Cryptid> GetCryptidById(int cryptidId)
+  {
+    try
+    {
+      Cryptid cryptid = _cryptidsService.GetCryptidById(cryptidId);
+      return Ok(cryptid);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 }
