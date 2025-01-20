@@ -8,16 +8,18 @@ defineProps({
 
 
 <template>
-  <div class="cryptid-card text-light fs-4  mb-5" :style="{ backgroundImage: `url(${cryptid.imgUrl})` }">
-    <div class="h-100 w-100 d-flex align-items-end p-3">
+  <RouterLink :to="{ name: 'CryptidDetails', params: { cryptidId: cryptid.id } }">
+    <div class="cryptid-card text-light fs-4  mb-5" :style="{ backgroundImage: `url(${cryptid.imgUrl})` }">
+      <div class="h-100 w-100 d-flex align-items-end p-3">
 
-      <div>
-        <span>{{ cryptid.displayId }}</span>
-        <hr>
-        <p>{{ cryptid.name }}</p>
+        <div>
+          <span>{{ cryptid.displayId }}</span>
+          <hr>
+          <p>{{ cryptid.name }}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 
