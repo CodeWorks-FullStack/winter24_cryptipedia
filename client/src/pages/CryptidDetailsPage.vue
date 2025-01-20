@@ -37,7 +37,7 @@ async function getCryptidById() {
           </span>
           <h1 class="italiana-font">{{ cryptid.name.toUpperCase() }}</h1>
           <p>{{ cryptid.description }}</p>
-          <h2 class="italiana-font" :title="'Threat Level ' + cryptid.threatLevel">
+          <h2 class="italiana-font" :title="`Threat Level ${cryptid.threatLevel}/10`">
             <span class="d-block">
               Threat Level:
             </span>
@@ -45,7 +45,7 @@ async function getCryptidById() {
             <i v-for="number in 10 - cryptid.threatLevel" :key="'remaining threat' + number"
               class="mdi mdi-circle-outline"></i>
           </h2>
-          <h2 class="italiana-font" :title="'Size ' + cryptid.threatLevel">
+          <h2 class="italiana-font" :title="`Size: ${cryptid.size}/10`">
             <span class="d-block">
               Size:
 

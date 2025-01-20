@@ -44,13 +44,13 @@ async function getCryptids() {
 
   <div class="container-fluid">
     <section class="row justify-content-center">
-      <div class="col-10">
+      <div class="col-md-10">
         <header class="italiana-font cryptids-header">
           <span class="bg-text">CRYPTIDS</span>
           <h2>CRYPTIDS</h2>
         </header>
       </div>
-      <div class="col-10">
+      <div class="col-md-10">
         <div class="row">
           <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-md-3 px-md-0">
             <CryptidCard :cryptid="cryptid" />
@@ -86,13 +86,13 @@ async function getCryptids() {
 .bg-text {
   font-size: 8rem;
   color: var(--bs-warning);
-  overflow-y: hidden;
   // FIXME make this look like not crap
-  max-width: 100%;
 }
 
 .cryptids-header {
   position: relative;
+  max-width: 100dvw;
+  overflow-x: hidden;
 
   span {
     user-select: none;
