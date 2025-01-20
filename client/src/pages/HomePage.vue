@@ -1,8 +1,11 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { cryptidsService } from '@/services/CryptidsService.js';
 import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+
+const cryptids = computed(() => AppState.cryptids)
 
 onMounted(() => {
   getCryptids()
@@ -37,6 +40,24 @@ async function getCryptids() {
       </div>
     </section>
   </div>
+
+  <div class="container-fluid">
+    <section class="row justify-content-center">
+      <div class="col-10">
+        <header class="italiana-font cryptids-header">
+          <span class="bg-text">CRYPTIDS</span>
+          <h2>CRYPTIDS</h2>
+        </header>
+      </div>
+      <div class="col-10">
+        <div class="row">
+          <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-md-3">
+            {{ cryptid.name }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -58,5 +79,25 @@ async function getCryptids() {
   img {
     filter: hue-rotate(-100deg);
   }
+
+}
+
+.bg-text {
+  font-size: 8rem;
+  color: var(--bs-warning);
+}
+
+.cryptids-header {
+  position: relative;
+
+  span {
+    user-select: none;
+  }
+}
+
+h2 {
+  font-size: 4rem;
+  position: absolute;
+  top: 3.5rem;
 }
 </style>
