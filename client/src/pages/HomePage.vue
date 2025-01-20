@@ -1,4 +1,21 @@
 <script setup>
+import { cryptidsService } from '@/services/CryptidsService.js';
+import { logger } from '@/utils/Logger.js';
+import Pop from '@/utils/Pop.js';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  getCryptids()
+})
+
+async function getCryptids() {
+  try {
+    await cryptidsService.getCryptids()
+  } catch (error) {
+    Pop.meow(error)
+    logger.error("[GETTING CRYPTIDS]", error.message)
+  }
+}
 
 </script>
 
@@ -8,10 +25,11 @@
       <div class="col-md-7 align-self-center">
         <div class="p-5 text-light">
           <h1>Terrestrials</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ipsum dolore culpa sint, dolor aliquam
-            blanditiis soluta minus commodi quos veritatis voluptas officiis quia distinctio esse, quam obcaecati
-            perspiciatis, sed quidem quasi. Obcaecati itaque consectetur laborum illo adipisci reprehenderit accusamus
-            amet iusto expedita doloribus! Non cupiditate vero itaque omnis. Consequuntur!</p>
+          <p>
+            A terrestrial cryptid is a creature that exists on land but has not been “scientifically” proven. These
+            creatures often stem from folklore, mythology, or anecdotal evidence. Unlike aquatic cryptids, like the Loch
+            Ness Monster, terrestrial cryptids inhabit forests, mountains, or other land-based environments.
+          </p>
         </div>
       </div>
       <div class="col-md-5 align-self-end">
@@ -29,7 +47,7 @@
 
 .shadow-layer {
   backdrop-filter: blur(2px);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.825);
 
 
   h1,
