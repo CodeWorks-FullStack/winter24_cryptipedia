@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace cryptipedia.Models;
 
-class Cryptid : RepoItem
+public class Cryptid : RepoItem
 {
   // id, createdAt,updatedAt inherited from repo item
   public string Name { get; set; }
@@ -12,4 +12,5 @@ class Cryptid : RepoItem
   public string Origin { get; set; }
   [Range(0, 10)] public int Size { get; set; }
   public string DiscovererId { get; set; }
+
 }

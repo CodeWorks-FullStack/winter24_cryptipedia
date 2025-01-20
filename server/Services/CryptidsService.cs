@@ -1,3 +1,4 @@
+
 namespace cryptipedia.Services;
 
 public class CryptidsService
@@ -8,4 +9,9 @@ public class CryptidsService
   }
   private readonly CryptidsRepository _repository;
 
+  internal Cryptid CreateCryptid(Cryptid cryptidData)
+  {
+    Cryptid cryptid = _repository.CreateCryptid(cryptidData);
+    return cryptid;
+  }
 }
