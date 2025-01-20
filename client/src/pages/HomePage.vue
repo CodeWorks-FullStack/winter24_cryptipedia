@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import CryptidCard from '@/components/CryptidCard.vue';
 import { cryptidsService } from '@/services/CryptidsService.js';
 import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
@@ -52,7 +53,7 @@ async function getCryptids() {
       <div class="col-10">
         <div class="row">
           <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-md-3">
-            {{ cryptid.name }}
+            <CryptidCard :cryptid="cryptid" />
           </div>
         </div>
       </div>
