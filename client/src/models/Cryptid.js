@@ -12,4 +12,8 @@ export class Cryptid {
     this.discovererId = data.discovererId
     this.discoverer = data.discoverer
   }
+
+  get displayId() {
+    return this.id < 10 ? '0' + this.id : this.id
+  }
 }

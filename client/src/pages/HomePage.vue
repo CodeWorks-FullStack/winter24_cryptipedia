@@ -52,7 +52,7 @@ async function getCryptids() {
       </div>
       <div class="col-10">
         <div class="row">
-          <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-md-3">
+          <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-md-3 px-md-0">
             <CryptidCard :cryptid="cryptid" />
           </div>
         </div>
@@ -86,6 +86,9 @@ async function getCryptids() {
 .bg-text {
   font-size: 8rem;
   color: var(--bs-warning);
+  overflow-y: hidden;
+  // FIXME make this look like not crap
+  max-width: 100%;
 }
 
 .cryptids-header {
