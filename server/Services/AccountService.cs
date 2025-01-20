@@ -1,5 +1,4 @@
 namespace cryptipedia.Services;
-
 public class AccountService
 {
   private readonly AccountsRepository _repo;
