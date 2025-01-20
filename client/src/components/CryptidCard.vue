@@ -10,8 +10,7 @@ defineProps({
 <template>
   <RouterLink :to="{ name: 'CryptidDetails', params: { cryptidId: cryptid.id } }">
     <div class="cryptid-card text-light fs-4  mb-5" :style="{ backgroundImage: `url(${cryptid.imgUrl})` }">
-      <div class="h-100 w-100 d-flex align-items-end p-3">
-
+      <div class="inner-card d-flex align-items-end p-3">
         <div>
           <span>{{ cryptid.displayId }}</span>
           <hr>
@@ -29,8 +28,9 @@ defineProps({
   background-size: cover;
 }
 
-.h-100 {
+.inner-card {
   min-height: 50dvh;
+  width: 100%;
   backdrop-filter: blur(3px);
 }
 
