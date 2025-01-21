@@ -71,10 +71,7 @@ async function createCryptidEncounter() {
               class="mdi mdi-circle-outline"></i>
           </h2>
           <h2 class="italiana-font mb-4" :title="`Size: ${cryptid.size}/10`">
-            <span class="d-block">
-              Size:
-
-            </span>
+            <span class="d-block">Size:</span>
             <i v-for="number in cryptid.size" :key="'size' + number" class="mdi mdi-circle"></i>
             <i v-for="number in 10 - cryptid.size" :key="'remaining size' + number" class="mdi mdi-circle-outline"></i>
           </h2>
