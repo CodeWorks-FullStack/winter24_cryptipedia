@@ -37,6 +37,16 @@ async function getCryptidEncounterProfilesByCryptidId() {
     logger.error('[GETTING CRYPTID PROFILES]', error.message)
   }
 }
+
+async function createCryptidEncounter() {
+  try {
+    const cryptidEncounterData = { cryptidId: route.params.cryptidId }
+    await cryptidEncountersService.createCryptidEncounter(cryptidEncounterData)
+  } catch (error) {
+    Pop.meow(error)
+    logger.error('[CREATE ENCOUNTER]', error.message)
+  }
+}
 </script>
 
 
@@ -66,6 +76,9 @@ async function getCryptidEncounterProfilesByCryptidId() {
             <i v-for="number in cryptid.size" :key="'size' + number" class="mdi mdi-circle"></i>
             <i v-for="number in 10 - cryptid.size" :key="'remaining size' + number" class="mdi mdi-circle-outline"></i>
           </h2>
+          <button @click="createCryptidEncounter()" class="btn btn-warning">
+            I've encountered the {{ cryptid.name }}
+          </button>
           <div v-if="profiles.length > 0">
             <h3 class="text-warning italiana-font">Encountered By {{ cryptid.encounterCount }} humans</h3>
             <div class="d-flex gap-2 flex-wrap">
