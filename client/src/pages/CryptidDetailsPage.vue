@@ -9,6 +9,7 @@ import { useRoute } from 'vue-router';
 
 
 const cryptid = computed(() => AppState.activeCryptid)
+const profiles = computed(() => AppState.cryptidEncounterProfiles)
 
 const route = useRoute()
 
@@ -57,7 +58,7 @@ async function getCryptidEncounterProfilesByCryptidId() {
             <i v-for="number in 10 - cryptid.threatLevel" :key="'remaining threat' + number"
               class="mdi mdi-circle-outline"></i>
           </h2>
-          <h2 class="italiana-font" :title="`Size: ${cryptid.size}/10`">
+          <h2 class="italiana-font mb-4" :title="`Size: ${cryptid.size}/10`">
             <span class="d-block">
               Size:
 
@@ -65,6 +66,13 @@ async function getCryptidEncounterProfilesByCryptidId() {
             <i v-for="number in cryptid.size" :key="'size' + number" class="mdi mdi-circle"></i>
             <i v-for="number in 10 - cryptid.size" :key="'remaining size' + number" class="mdi mdi-circle-outline"></i>
           </h2>
+          <div v-if="profiles.length > 0">
+            <h3 class="text-warning italiana-font">Encountered By</h3>
+            <div class="d-flex gap-2 flex-wrap">
+              <img v-for="profile in profiles" :key="profile.cryptidEncounterId" :src="profile.picture"
+                :alt="'picture of ' + profile.name" :title="profile.name" class="profile-picture">
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-4 px-md-0">
@@ -88,5 +96,12 @@ h1 {
 
 .sub-header {
   font-size: 3rem;
+}
+
+.profile-picture {
+  height: 10dvh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
 }
 </style>
