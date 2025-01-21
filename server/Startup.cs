@@ -39,6 +39,9 @@ public class Startup
 
     services.AddScoped<CryptidsRepository>();
     services.AddScoped<CryptidsService>();
+
+    services.AddScoped<CryptidEncountersRepository>();
+    services.AddScoped<CryptidEncountersService>();
   }
 
   private void ConfigureCors(IServiceCollection services)
