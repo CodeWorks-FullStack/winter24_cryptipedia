@@ -33,15 +33,21 @@ CREATE TABLE cryptid_encounters(
   UNIQUE(account_id, cryptid_id)
 );
 
+SELECT * FROM accounts;
+
+INSERT INTO cryptid_encounters(account_id, cryptid_id) VALUES('670ff93326693293c631476f', 11);
+SELECT * FROM cryptids;
 
 DROP TABLE cryptids;
 
 CREATE VIEW cryptid_encounter_profiles_view AS
   SELECT 
   accounts.*,
-  cryptid_encounters.id AS cryptid_encounter_id
+  cryptid_encounters.id AS cryptid_encounter_id,
+  cryptid_encounters.cryptid_id AS cryptid_id
   FROM cryptid_encounters
   JOIN accounts ON accounts.id = cryptid_encounters.account_id;
 
+DROP VIEW cryptid_encounter_profiles_view;
 
-SELECT * FROM cryptid_encounter_profiles_view;
+SELECT * FROM cryptid_encounter_profiles_view WHERE cryptid_id = 11;
