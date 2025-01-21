@@ -13,4 +13,5 @@ public class Cryptid : RepoItem<int> // int is the type of id
   public string Origin { get; set; }
   public string DiscovererId { get; set; }
   public Profile Discoverer { get; set; }
+  public int EncounterCount { get; set; }
 }
