@@ -36,7 +36,12 @@ CREATE TABLE cryptid_encounters(
 
 DROP TABLE cryptids;
 
+CREATE VIEW cryptid_encounter_profiles_view AS
+  SELECT 
+  accounts.*,
+  cryptid_encounters.id AS cryptid_encounter_id
+  FROM cryptid_encounters
+  JOIN accounts ON accounts.id = cryptid_encounters.account_id;
 
-  SELECT * FROM cryptid_encounters
-  JOIN accounts ON accounts.id = cryptid_encounters.account_id
-    WHERE cryptid_encounters.id = 1;
+
+SELECT * FROM cryptid_encounter_profiles_view;
