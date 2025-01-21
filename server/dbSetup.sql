@@ -22,6 +22,18 @@ CREATE TABLE cryptids(
   FOREIGN KEY (discoverer_id) REFERENCES accounts(id) ON DELETE CASCADE
 );
 
+CREATE TABLE cryptid_encounters(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  account_id VARCHAR(255) NOT NULL,
+  cryptid_id INT NOT NULL,
+  FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
+  FOREIGN KEY (cryptid_id) REFERENCES cryptids(id) ON DELETE CASCADE,
+  UNIQUE(account_id, cryptid_id)
+);
+
+
 DROP TABLE cryptids;
 
 INSERT INTO
