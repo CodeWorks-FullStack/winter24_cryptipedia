@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import { cryptidEncountersService } from '@/services/CryptidEncountersService.js';
 import { cryptidsService } from '@/services/CryptidsService.js';
 import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
@@ -13,6 +14,7 @@ const route = useRoute()
 
 onMounted(() => {
   getCryptidById()
+  getCryptidEncounterProfilesByCryptidId()
 })
 
 async function getCryptidById() {
@@ -22,6 +24,16 @@ async function getCryptidById() {
   } catch (error) {
     Pop.meow(error)
     logger.error('[GETTING CRYPTID BY ID]', error.message)
+  }
+}
+
+async function getCryptidEncounterProfilesByCryptidId() {
+  try {
+    const cryptidId = route.params.cryptidId
+    await cryptidEncountersService.getCryptidEncounterProfilesByCryptidId(cryptidId)
+  } catch (error) {
+    Pop.meow(error)
+    logger.error('[GETTING CRYPTID PROFILES]', error.message)
   }
 }
 </script>
