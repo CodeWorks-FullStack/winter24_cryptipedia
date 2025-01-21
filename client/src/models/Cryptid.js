@@ -1,3 +1,5 @@
+import { Profile } from "./Profile.js"
+
 export class Cryptid {
   constructor(data) {
     this.id = data.id
@@ -10,7 +12,7 @@ export class Cryptid {
     this.origin = data.origin
     this.size = data.size
     this.discovererId = data.discovererId
-    this.discoverer = data.discoverer
+    this.discoverer = new Profile(data.discoverer)
   }
 
   get displayId() {
