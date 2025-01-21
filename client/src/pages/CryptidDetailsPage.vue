@@ -10,6 +10,8 @@ import { useRoute } from 'vue-router';
 
 const cryptid = computed(() => AppState.activeCryptid)
 const profiles = computed(() => AppState.cryptidEncounterProfiles)
+const account = computed(() => AppState.account)
+const hasEncountered = computed(() => profiles.value.some(profile => profile.id == account.value?.id))
 
 const route = useRoute()
 
@@ -76,7 +78,8 @@ async function createCryptidEncounter() {
             <i v-for="number in cryptid.size" :key="'size' + number" class="mdi mdi-circle"></i>
             <i v-for="number in 10 - cryptid.size" :key="'remaining size' + number" class="mdi mdi-circle-outline"></i>
           </h2>
-          <button @click="createCryptidEncounter()" class="btn btn-warning">
+          <button v-if="account" :disabled="hasEncountered" @click="createCryptidEncounter()"
+            class="btn btn-warning mb-2">
             I've encountered the {{ cryptid.name }}
           </button>
           <div v-if="profiles.length > 0">
