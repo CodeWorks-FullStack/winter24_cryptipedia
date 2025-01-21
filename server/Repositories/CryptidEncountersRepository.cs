@@ -3,6 +3,8 @@
 
 
 
+
+
 namespace cryptipedia.Repositories;
 
 public class CryptidEncountersRepository
@@ -48,6 +50,24 @@ public class CryptidEncountersRepository
     List<CryptidEncounterProfile> cryptidEncounterProfiles = _db.Query<CryptidEncounterProfile>(sql, new { cryptidId }).ToList();
 
     return cryptidEncounterProfiles;
+  }
+
+  internal CryptidEncounter GetCryptidEncounterById(int cryptidEncounterId)
+  {
+    string sql = "SELECT * FROM cryptid_encounters WHERE id = @cryptidEncounterId;";
+
+    CryptidEncounter cryptidEncounter = _db.Query<CryptidEncounter>(sql, new { cryptidEncounterId }).SingleOrDefault();
+
+    return cryptidEncounter;
+  }
+
+  internal void DeleteCryptidEncounter(int cryptidEncounterId)
+  {
+    string sql = "DELETE FROM cryptid_encounters WHERE id = @cryptidEncounterId LIMIT 1;";
+
+    int rowsAffected = _db.Execute(sql, new { cryptidEncounterId });
+
+    if (rowsAffected != 1) throw new Exception($"DELETE FAILED WITH {rowsAffected} ROWS DELETED");
   }
 }
 
