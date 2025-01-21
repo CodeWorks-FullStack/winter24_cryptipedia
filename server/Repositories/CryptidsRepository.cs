@@ -37,14 +37,11 @@ public class CryptidsRepository
   {
     string sql = @"
     SELECT
-    cryptids.*,
-    COUNT(cryptid_encounters.id) AS encounter_count,
+    cryptids_with_encounter_count_view.*,
     accounts.*
-    FROM cryptids
-    LEFT JOIN cryptid_encounters ON cryptids.id = cryptid_encounters.cryptid_id
-    JOIN accounts ON cryptids.discoverer_id = accounts.id
-    GROUP BY(cryptids.id)
-    ORDER BY cryptids.created_at ASC;";
+    FROM cryptids_with_encounter_count_view
+    JOIN accounts ON cryptids_with_encounter_count_view.discoverer_id = accounts.id
+    ORDER BY cryptids_with_encounter_count_view.created_at ASC;";
 
     List<Cryptid> cryptids = _db.Query(sql, (Cryptid cryptid, Profile account) =>
     {
@@ -59,11 +56,11 @@ public class CryptidsRepository
   {
     string sql = @"
     SELECT
-    cryptids.*,
+    cryptids_with_encounter_count_view.*,
     accounts.*
-    FROM cryptids
-    JOIN accounts ON cryptids.discoverer_id = accounts.id
-    WHERE cryptids.id = @cryptidId;";
+    FROM cryptids_with_encounter_count_view
+    JOIN accounts ON cryptids_with_encounter_count_view.discoverer_id = accounts.id
+    WHERE cryptids_with_encounter_count_view.id = @cryptidId;";
 
     Cryptid cryptid = _db.Query(sql, (Cryptid cryptid, Profile account) =>
     {

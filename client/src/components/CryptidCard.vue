@@ -12,9 +12,9 @@ defineProps({
     <div class="cryptid-card text-light fs-4  mb-5" :style="{ backgroundImage: `url(${cryptid.imgUrl})` }">
       <div class="inner-card d-flex flex-column justify-content-between p-3">
         <div class="text-end">
-          <span title="Encountered by 0 humans">
+          <span :title="`Encountered by ${cryptid.encounterCount} humans`">
             <i class="mdi mdi-ufo-outline me-1"></i>
-            <span>0</span>
+            <span>{{ cryptid.encounterCount }}</span>
           </span>
         </div>
         <div>

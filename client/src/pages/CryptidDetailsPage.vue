@@ -67,7 +67,7 @@ async function getCryptidEncounterProfilesByCryptidId() {
             <i v-for="number in 10 - cryptid.size" :key="'remaining size' + number" class="mdi mdi-circle-outline"></i>
           </h2>
           <div v-if="profiles.length > 0">
-            <h3 class="text-warning italiana-font">Encountered By</h3>
+            <h3 class="text-warning italiana-font">Encountered By {{ profiles.length }} humans</h3>
             <div class="d-flex gap-2 flex-wrap">
               <img v-for="profile in profiles" :key="profile.cryptidEncounterId" :src="profile.picture"
                 :alt="'picture of ' + profile.name" :title="profile.name" class="profile-picture">

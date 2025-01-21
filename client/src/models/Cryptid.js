@@ -13,6 +13,7 @@ export class Cryptid {
     this.size = data.size
     this.discovererId = data.discovererId
     this.discoverer = new Profile(data.discoverer)
+    this.encounterCount = data.encounterCount
   }
 
   get displayId() {

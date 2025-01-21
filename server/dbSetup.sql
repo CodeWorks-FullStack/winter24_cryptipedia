@@ -50,20 +50,10 @@ SELECT COUNT(*) FROM cryptid_encounters WHERE cryptid_id = 11;
 
 SELECT * FROM cryptids;
 
+CREATE VIEW cryptids_with_encounter_count_view AS
 SELECT
 cryptids.*,
 COUNT(cryptid_encounters.id) AS encounter_count
 FROM cryptids
 LEFT JOIN cryptid_encounters ON cryptids.id = cryptid_encounters.cryptid_id
 GROUP BY(cryptids.id);
-
-
-SELECT
-    cryptids.*,
-    COUNT(cryptid_encounters.id) AS encounter_count,
-    accounts.*
-    FROM cryptids
-    LEFT JOIN cryptid_encounters ON cryptids.id = cryptid_encounters.cryptid_id
-    JOIN accounts ON cryptids.discoverer_id = accounts.id
-    GROUP BY(cryptids.id)
-    ORDER BY cryptids.created_at ASC
