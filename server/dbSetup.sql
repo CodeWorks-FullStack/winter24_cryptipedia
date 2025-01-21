@@ -43,3 +43,16 @@ CREATE VIEW cryptid_encounter_profiles_view AS
 
 SELECT * FROM cryptid_encounter_profiles_view;
 SELECT * FROM cryptid_encounter_profiles_view WHERE cryptid_id = 11;
+
+SELECT * FROM cryptid_encounters;
+
+SELECT COUNT(*) FROM cryptid_encounters WHERE cryptid_id = 11;
+
+SELECT * FROM cryptids;
+
+SELECT
+cryptids.*,
+COUNT(cryptid_encounters.id) AS encounter_count
+FROM cryptids
+LEFT JOIN cryptid_encounters ON cryptids.id = cryptid_encounters.cryptid_id
+GROUP BY(cryptids.id);
