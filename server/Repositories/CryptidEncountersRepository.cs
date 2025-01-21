@@ -17,19 +17,20 @@ public class CryptidEncountersRepository
 
   internal CryptidEncounterProfile CreateCryptidEncounter(CryptidEncounter cryptidEncounterData)
   {
+    // NOTE this still works
     // string sql = @"
     // INSERT INTO
     // cryptid_encounters(account_id, cryptid_id)
     // VALUES(@AccountId, @CryptidId);
 
     // SELECT 
-    // cryptid_encounters.*,
     // accounts.*,
     // cryptid_encounters.id AS cryptid_encounter_id
     // FROM cryptid_encounters
     // JOIN accounts ON accounts.id = cryptid_encounters.account_id
     // WHERE cryptid_encounters.id = LAST_INSERT_ID();";
 
+    // NOTE must have set up view in dbSetup for this to work
     string sql = @"
     INSERT INTO
     cryptid_encounters(account_id, cryptid_id)
